@@ -32,18 +32,18 @@ app.use("/api/influencers", require("./routes/influencerRoutes"));
 // Comments Routes
 app.use("/api/comments", require("./routes/commentRoutes"));
 
-if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "/client/dist")));
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"))
-  );
-} else {
-  const __dirname = path.resolve();
-  app.get("/", (req, res) => {
-    res.send("Influencer Adda API is running....");
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   const __dirname = path.resolve();
+//   app.use(express.static(path.join(__dirname, "/client/dist")));
+//   app.get("*", (req, res) =>
+//     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"))
+//   );
+// } else {
+//   const __dirname = path.resolve();
+//   app.get("/", (req, res) => {
+//     res.send("Influencer Adda API is running....");
+//   });
+// }
 
 // Error Handler
 app.use(errorHandler);
