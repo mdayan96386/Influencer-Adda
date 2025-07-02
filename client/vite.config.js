@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:7000",
+        target: "https://influencer-adda.onrender.com/",
         changeOrigin: true,
         secure: false,
       },

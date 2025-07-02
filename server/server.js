@@ -4,9 +4,12 @@ const connectDB = require("./config/db_config");
 const path = require("path");
 const errorHandler = require("./middleware/errorHandler");
 require("dotenv").config();
+const cors = require('cors');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.use(cors());
 
 
 
@@ -17,7 +20,7 @@ connectDB();
    app.get("/", (req, res) => {
     res.send("Influencer Adda API is running....");
   })
-  
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
