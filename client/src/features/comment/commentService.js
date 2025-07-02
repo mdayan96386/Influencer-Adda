@@ -1,4 +1,5 @@
 import axios from "axios";
+const base_url = 'https://influencer-adda.onrender.com'
 
 const fetchComments = async (id, token) => {
   const options = {
@@ -7,7 +8,7 @@ const fetchComments = async (id, token) => {
     },
   };
 
-  const response = await axios.get(`/api/booking/${id}/comment`, options);
+  const response = await axios.get(`${base_url}/api/booking/${id}/comment`, options);
   return response.data;
 };
 
@@ -19,7 +20,7 @@ const createComment = async (formData, token) => {
   };
 
   const response = await axios.post(
-    `/api/booking/${formData.id}/comment`,
+    `${base_url}/api/booking/${formData.id}/comment`,
     formData,
     options
   );

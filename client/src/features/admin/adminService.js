@@ -1,4 +1,6 @@
 import axios from "axios";
+const base_url = 'https://influencer-adda.onrender.com'
+
 
 const fetchAllUsersBookingsForAdmin = async (token) => {
   const options = {
@@ -7,7 +9,7 @@ const fetchAllUsersBookingsForAdmin = async (token) => {
     },
   };
 
-  const response = await axios.get("/api/admin/bookings", options);
+  const response = await axios.get(`${base_url}/api/admin/bookings`, options);
   // console.log(response.data);
   return response.data;
 };
@@ -19,12 +21,12 @@ const fetchAllUsersForAdmin = async (token) => {
     },
   };
 
-  const response = await axios.get("/api/admin/users", options);
+  const response = await axios.get(`${base_url}/api/admin/users`, options);
   return response.data;
 };
 
 const fetchInfluencersForAdmin = async () => {
-  const response = await axios.get("/api/influencers");
+  const response = await axios.get(`${base_url}/api/influencers`);
   return response.data;
 };
 
@@ -34,7 +36,7 @@ const fetchAllCommentsForAdmin = async (token) => {
       authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get("/api/admin/comments", options);
+  const response = await axios.get(`${base_url}/api/admin/comments`, options);
   return response.data;
 };
 
@@ -45,7 +47,7 @@ const addInfluencer = async (formData, token) => {
     },
   };
 
-  const response = await axios.post("/api/admin/influencer", formData, options);
+  const response = await axios.post(`${base_url}/api/admin/influencer`, formData, options);
   return response.data;
 };
 
@@ -57,7 +59,7 @@ const updateInfluencer = async (formData, token) => {
   };
 
   const response = await axios.put(
-    `/api/admin/influencer/${formData._id}`,
+    `${base_url}/api/admin/influencer/${formData._id}`,
     formData,
     options
   );
@@ -71,7 +73,7 @@ const deleteInfluencer = async (id, token) => {
     },
   };
 
-  const response = await axios.delete(`/api/admin/influencer/${id}`, options);
+  const response = await axios.delete(`${base_url}/api/admin/influencer/${id}`, options);
   return response.data;
 };
 
@@ -82,7 +84,7 @@ const updateBooking = async (updateStatus, token) => {
     },
   };
   const response = await axios.put(
-    `/api/admin/bookings/${updateStatus.id}`,
+    `${base_url}/api/admin/bookings/${updateStatus.id}`,
     { status: updateStatus.value },
     options
   );
@@ -97,7 +99,7 @@ const replyCommentByAdmin = async(formData, token) => {
     },
   };
 
-    const response = await axios.post(`/api/booking/${formData.bid}/comment`, formData, options)
+    const response = await axios.post(`${base_url}/api/booking/${formData.bid}/comment`, formData, options)
   console.log(response.data)
   return response.data
 
